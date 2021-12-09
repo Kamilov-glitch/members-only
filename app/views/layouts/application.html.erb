@@ -6,22 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="notification is-primary global-notification">
-        <p clas="notice"><%= notice %></p>
-      </div>
-    <% end %>
+    <div class="alert">
 
-    <% if flash[:alert] %>
-      <div class="notifiaction is-primary global-notification">
-        <p class="alert"><%= alert %></p>
-      </div>
-    <% end %>
+      <% if flash[:notice] %>
+        <div class="notification is-primary global-notification">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="notifiaction is-primary global-notification">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% end %>
+
+    </div>
 
     <nav class="navbar is-success">
       <div class="navbar-brand">
@@ -39,11 +44,11 @@
                 <%= link_to "New Post", new_post_path, class: "button is-warning" %>
               </p>
               <p class="control">
-                <%= link_to "Logout", destroy_user_session_path, method: :destroy, class: "button is-warning" %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-warning" %>
               </p>
             <% else %>
               <p class="control">
-                <%= link_to "Sign In", new_user_registration_path, class: "button is-warning" %>
+                <%= link_to "Sign In", new_user_session_path, class: "button is-warning" %>
               </p>
               <p class="control">
                 <%= link_to "Sign Up", new_user_registration_path, class: "button is-warning" %>
