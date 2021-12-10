@@ -6,9 +6,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> %>
+    <script src="https://kit.fontawesome.com/4dbb07b465.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -30,7 +31,6 @@
 
     <nav class="navbar is-success">
       <div class="navbar-brand">
-        <%# <p class="title is-3 has-text-white-ter">Members-Only</p> %>
         <%= link_to root_path, class: "navbar-item" do %>
           <h1 class="title is-3 has-text-white-ter">Members Only</h1>
         <% end %>
@@ -40,6 +40,11 @@
           <div class="navbar-item">
             <div class="field is-grouped">
             <% if user_signed_in? %>
+              <p class="control">
+                <%= link_to edit_user_registration_path, class: "button is-warning" do %>
+                  <%= current_user.username %>
+                <% end %>
+              </p>
               <p class="control">
                 <%= link_to "New Post", new_post_path, class: "button is-warning" %>
               </p>
