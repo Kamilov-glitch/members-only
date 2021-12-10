@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :logged_in_user, only: [:edit, :destroy, :update]
   # GET /posts or /posts.json
   def index
     @posts = Post.all.order("created_at DESC")
@@ -65,5 +66,16 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:content)
+    end
+
+    def current_user?(user)
+      user == current_user
+   end
+
+    def logged_in_user
+      unless current_user?(@post.user)
+        flash[:alert] = "You are not authorized to do that, stick to your own posts"
+        redirect_to root_path
+      end
     end
 end
