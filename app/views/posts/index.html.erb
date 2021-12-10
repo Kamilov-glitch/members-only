@@ -10,6 +10,9 @@
         <div class="media">
           <div class="media-content">
             <div class="content">
+              <% if user_signed_in? %>
+                <strong><%= post.user.username %></strong><br />
+              <% end %>
               <article class="block is-medium">
                 <%= post.content %>
               </article>
