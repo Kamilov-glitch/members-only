@@ -13,21 +13,23 @@
   </head>
 
   <body>
-    <div class="alert">
 
       <% if flash[:notice] %>
-        <div class="notification is-primary global-notification">
-          <p class="notice"><%= notice %></p>
+        <div class="alert">
+          <div class="notification is-primary global-notification">
+            <p class="notice"><%= notice %></p>
+          </div>
         </div>
       <% end %>
 
       <% if flash[:alert] %>
-        <div class="notifiaction is-primary global-notification">
-          <p class="alert"><%= alert %></p>
+        <div class="alert">
+          <div class="notifiaction is-primary global-notification">
+            <p class="alert"><%= alert %></p>
+          </div>
         </div>
       <% end %>
 
-    </div>
 
     <nav class="navbar is-success">
       <div class="navbar-brand">
