@@ -3,10 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+# Use postgresql for production
+gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -31,6 +31,15 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails', '~> 0.9.2'
 gem 'simple_form', '~> 5.1'
 gem 'devise', '~> 4.8'
+
+# Code form stackoverflow for heroku deployment
+group :development do
+   gem 'sqlite3'
+end
+
+group :test, :production do
+    gem 'pg'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
